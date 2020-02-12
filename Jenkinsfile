@@ -17,10 +17,10 @@ pipeline {
    
    post{
       failure{
-         mail to:'1400902533@qq.com', subject: 'The pipeline failed'
+         mail to:'1400902533@qq.com', subject: 'The pipeline failed', body: 'failed'
       }
       success{
-         mail to:'1400902533@qq.com', subject: 'The pipeline success'
+         mail to:'1400902533@qq.com', subject: 'The pipeline success', body: 'success'
       }
       
    }
