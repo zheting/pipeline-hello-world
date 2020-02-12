@@ -14,4 +14,14 @@ pipeline {
          }
       }
    }
+   
+   post{
+      failure{
+         mail to:'1400902533@qq.com', subject: 'The pipeline failed'
+      }
+      success{
+         mail to:'1400902533@qq.com', subject: 'The pipeline success'
+      }
+      
+   }
 }
