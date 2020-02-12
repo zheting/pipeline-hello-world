@@ -9,6 +9,8 @@ pipeline {
       stage('Hello') {
          steps {
             echo 'Hello World'
+            sh "mvn version"
+            sh "printenv"
          }
       }
    }
