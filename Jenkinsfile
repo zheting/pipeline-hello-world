@@ -1,6 +1,10 @@
 pipeline {
    agent any
    
+   options {
+      disableConcurrentBuilds()
+   }
+   
    tools{
       maven 'mvn-3.5.4'
    }
