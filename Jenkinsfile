@@ -13,7 +13,7 @@ pipeline {
       stage('Hello') {
          steps {
             echo 'Hello World'
-            echo 'build num: ${env.BUILD_NUMBER}  $env.JENKINS_URL'
+            echo "build num: ${env.BUILD_NUMBER}  $env.JENKINS_URL"
             sh "mvn -version"
             sh "printenv"
          }
