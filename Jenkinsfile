@@ -36,7 +36,7 @@ pipeline {
       }
       always{
          pmd(canRunOnFailed:true, pattern: '**/target/pmd.xml')
-         junit testResults: "**/target/surefire-reports/*.xml"
+         junit allowEmptyResults: true, testResults: "**/target/surefire-reports/*.xml"
       }
    }
 }
