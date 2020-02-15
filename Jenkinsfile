@@ -18,6 +18,13 @@ pipeline {
             sh "printenv"
          }
       }
+      stage('PMD') {
+         steps {
+            configFileProvider([configFile(fileId: "maven-global-settings", variable: "MAVEN_GLOBAL_ENV")]) {
+               sh "mvn -s $MAVEN_GLOBAL_ENV pmd:pmd"
+            }
+         }
+      }
    }
    
    post{
@@ -27,6 +34,8 @@ pipeline {
       success{
          mail to:'1400902533@qq.com', subject: 'The pipeline success', body: 'success'
       }
-      
+      always{
+         pmd(canRunOnFailed:true, pattern: '**/target/pmd.xml')
+      }
    }
 }
