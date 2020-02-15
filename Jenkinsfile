@@ -18,6 +18,11 @@ pipeline {
             sh "printenv"
          }
       }
+      stage('PMD') {
+         steps {
+            sh "mvn pmd:pmd"
+         }
+      }
    }
    
    post{
@@ -27,6 +32,8 @@ pipeline {
       success{
          mail to:'1400902533@qq.com', subject: 'The pipeline success', body: 'success'
       }
-      
+      always{
+         pmd(canRunOnFailed:true, pattern: '**/target/pmd.xml')
+      }
    }
 }
