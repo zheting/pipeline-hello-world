@@ -20,7 +20,9 @@ pipeline {
       }
       stage('PMD') {
          steps {
-            sh "mvn pmd:pmd"
+            configFileProvider([configFile(fileId: "maven-global-settings", variable: "MAVEN_GLOBAL_ENV")]) {
+               sh "mvn -s $MAVEN_GLOBAL_ENV pmd:pmd"
+            }
          }
       }
    }
