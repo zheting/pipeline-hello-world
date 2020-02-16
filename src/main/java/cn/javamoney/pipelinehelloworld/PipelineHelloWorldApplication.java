@@ -3,6 +3,9 @@ package cn.javamoney.pipelinehelloworld;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author javamoney.cn
+ */
 @SpringBootApplication
 public class PipelineHelloWorldApplication {
 
