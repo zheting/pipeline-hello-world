@@ -19,7 +19,11 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
-        <sonar.host.url>http://114.67.104.171:9000</sonar.host.url>
+
+        <!--<sonar.host.url>http://114.67.104.171:9000</sonar.host.url>
+        <sonar.projectKey>pipeline-hello-world</sonar.projectKey>
+        <sonar.login>Devin</sonar.login>
+        <sonar.password>zwx390614</sonar.password>-->
     </properties>
 
     <dependencies>
