@@ -1,14 +1,15 @@
 pipeline {
+
    agent any
-   
+
    options {
       disableConcurrentBuilds()
    }
-   
+
    tools{
       maven 'mvn-3.5.4'
    }
-   
+
    stages {
       stage('Hello') {
          steps {
@@ -18,6 +19,7 @@ pipeline {
             sh "printenv"
          }
       }
+
       stage('PMD') {
          steps {
             configFileProvider([configFile(fileId: "maven-global-settings", variable: "MAVEN_GLOBAL_ENV")]) {
@@ -25,6 +27,7 @@ pipeline {
             }
          }
       }
+
       stage('Junit') {
          steps {
             configFileProvider([configFile(fileId: "maven-global-settings", variable: "MAVEN_GLOBAL_ENV")]) {
@@ -32,6 +35,7 @@ pipeline {
             }
          }
       }
+
       stage('JaCoCo') {
            steps {
               configFileProvider([configFile(fileId: "maven-global-settings", variable: "MAVEN_GLOBAL_ENV")]) {
@@ -79,6 +83,7 @@ pipeline {
             deltaBranchCoverage:'80'
           )
       }
+	}
       stage('sonarQube') {
             steps {
                 withSonarQubeEnv('sonarqube'){
@@ -94,9 +99,8 @@ pipeline {
               }
            }
       }
-
    }
-   
+
    post{
       failure{
          mail to:'1400902533@qq.com', subject: 'The pipeline failed', body: 'failed'
@@ -109,4 +113,5 @@ pipeline {
          junit allowEmptyResults: true, testResults: "**/target/surefire-reports/*.xml"
       }
    }
+
 }
